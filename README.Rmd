@@ -1,0 +1,17 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+This package creates .CSV files of sunset and sunrise appointments--with a user-specified location that can be imported into Google Calender. Function sunset_calc is taken from Hilary Parker's Personal R package and has been modified.[Hilary Parker Github](https://github.com/hilaryparker/hilary/tree/master/R)

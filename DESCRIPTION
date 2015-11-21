@@ -12,6 +12,9 @@ LazyData: true
 Imports: 
     StreamMetabolism,dplyr
 RoxygenNote: 5.0.0
-Suggests: testthat
+Suggests: testthat,
+    knitr,
+    rmarkdown
 URL: https://github.com/gjahesh/sunsetrise
 BugReports: https://github.com/gjahesh/sunsetrise/issues
+VignetteBuilder: knitr

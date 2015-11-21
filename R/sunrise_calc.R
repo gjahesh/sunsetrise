@@ -4,39 +4,39 @@
 #' @param date Date at which you want the calendar to start, in yyyy/mm/dd format.
 #' @param lat  Latitude of location (for sunset time calculation)
 #' @param long Longitude of location (for sunset time calculation, will be negative for continental US)
-#' @param timezone Timezone of location (for sunset time calculation).
-#' @param num.days Number of days you want sunset appointments for.
+#' @param timezone timezone of location (for sunrise time calculation).
+#' @param num.days num.days Number of days you want sunset appointments for.
 #' @param file Filename for outputted .CSV file (to be uploaded to Google Calendar).
 #' @param location Location of sunset appointment. Will be input into Google Calendar event as the event location.
 #'
-#' @return .CSV file
-#' @export
+#' @return
+#' @export .CSV file
 #'
 #' @examples
-#'create_sunset_cal <- function(date= "2015/01/01",lat = 37.8789,long = -122.5362,timezone = "UTC-8",file="sunset.csv",location = "Spruce Harbour Marina, Vancouver, BC V6H")
-create_sunset_cal <- function(date="2015/01/01",
-                              lat = 37.8789,
-                              long = -122.5362,
-                              timezone = "UTC-8",
-                              num.days = 365,
-                              file="sunset.csv",
-                              location = "Spruce Harbour Marina, Vancouver, BC V6H"){
+#' create_sunrise_cal <- function(date="2015/01/01",lat = 49.2748,timezone = "UTC-8",num.days = 365,file="sunrise.csv",location = "Spanish Banks, Vancouver, BC V6T")
+create_sunrise_cal <- function(date="2015/01/01",
+                               lat = 49.2748,
+                               long = -123.2237,
+                               timezone = "UTC-8",
+                               num.days = 365,
+                               file="sunrise.csv",
+                               location = "Spanish Banks, Vancouver, BC V6T"
+                               ){
 
-  date = date
-  location <- gsub(",", "",location)
+  location <- gsub(",", "", location)
   dates <- seq(
     as.Date(date),
     by = "day",
     length.out = num.days
   )
 
-  sunset_times <- sunrise.set(
+  sunrise_times <- sunrise.set(
     lat = lat,
     long = long,
     date = date,
     timezone = timezone,
     num.days = num.days
-  )$sunset
+  )$sunrise
 
   nms <- c(
     'Subject',
@@ -56,16 +56,16 @@ create_sunset_cal <- function(date="2015/01/01",
   mat <- data.frame(mat)
   colnames(mat) <- nms
 
-  mat$Subject <- "Sunset"
+  mat$Subject <- "Sunrise"
   mat$"Start Date" <- dates
   mat$"End Date" <- dates
   mat$"All Day Event" <- "False"
-  mat$Description <- "Sunset Calendar"
+  mat$Description <- "Sunrise Calendar"
   mat$Location <- location
   mat$Private <- "False"
 
-  starts <- strftime(sunset_times, format="%H:%M:%S %p")
-  ends <- strftime(sunset_times+60*30, format="%H:%M:%S %p")
+  starts <- strftime(sunrise_times, format="%H:%M:%S %p")
+  ends <- strftime(sunrise_times+60*30, format="%H:%M:%S %p")
   mat$"Start Time" <- starts
   mat$"End Time" <- ends
 
@@ -77,3 +77,4 @@ create_sunset_cal <- function(date="2015/01/01",
   )
 
 }
+

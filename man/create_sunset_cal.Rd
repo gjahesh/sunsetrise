@@ -4,9 +4,9 @@
 \alias{create_sunset_cal}
 \title{Creates a sunset calender}
 \usage{
-create_sunset_cal(date = "2015/01/01", lat = 49.2623, long = -123.2619,
+create_sunset_cal(date = "2015/01/01", lat = 37.8789, long = -122.5362,
   timezone = "UTC-8", num.days = 365, file = "sunset.csv",
-  location = "Wreck Beach, Vancouver, BC V6T")
+  location = "Spruce Harbour Marina, Vancouver, BC V6H")
 }
 \arguments{
 \item{date}{Date at which you want the calendar to start, in yyyy/mm/dd format.}
@@ -30,6 +30,6 @@ create_sunset_cal(date = "2015/01/01", lat = 49.2623, long = -123.2619,
 Creates a sunset calender
 }
 \examples{
-
+create_sunset_cal <- function(date= "2015/01/01",lat = 37.8789,long = -122.5362,timezone = "UTC-8",file="sunset.csv",location = "Spruce Harbour Marina, Vancouver, BC V6H")
 }
 
