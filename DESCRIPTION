@@ -5,10 +5,13 @@ Authors@R: person("Golnaz", "Jahesh", email = "golnaz.jahesh@gmail.com", role = 
 Description: This package creates .CSV files of sunset and sunrise appointments--with a user-specified location
         that can be imported into Google Calender. Function sunset_calc is taken from Hilary Parker's
         Personal R package and has been modified.
-Depends:
+Depends: 
     R (>= 3.2.2)
 License: GPL-3 + file LICENCE
 LazyData: true
-Imports:
-    StreamMetabolism
+Imports: 
+    StreamMetabolism,dplyr
 RoxygenNote: 5.0.0
+Suggests: testthat
+URL: https://github.com/gjahesh/sunsetrise
+BugReports: https://github.com/gjahesh/sunsetrise/issues
