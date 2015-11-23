@@ -9,11 +9,9 @@
 #' @param file Filename for outputted .CSV file (to be uploaded to Google Calendar).
 #' @param location Location of sunset appointment. Will be input into Google Calendar event as the event location.
 #'
-#' @return
-#' @export .CSV file
-#'
+#' @return CSV file
+#' @export
 #' @examples
-#' create_sunrise_cal <- function(date="2015/01/01",lat = 49.2748,timezone = "UTC-8",num.days = 365,file="sunrise.csv",location = "Spanish Banks, Vancouver, BC V6T")
 create_sunrise_cal <- function(date="2015/01/01",
                                lat = 49.2748,
                                long = -123.2237,

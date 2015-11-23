@@ -1,7 +1,7 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
-date: "`r Sys.Date()`"
+title: "Sunset_Sunrise Calender"
+author: "Hilary Parker, modified by Golnaz Jahesh"
+date: "`Nov 16, 2015"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
@@ -9,50 +9,37 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+The purpose of this package is to create .CSV files , one for sunset times and one for sunrise times
+of the user-specifed location. There are 2 functions in this pacakge:
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+1. `sunset_calc()`  
+2. `sunrise_calc()`  
 
-## Vignette Info
+The input parameters are as follow:
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+'@param date Date at which you want the calendar to start, in yyyy/mm/dd format.  
+'#' @param lat  Latitude of location (for sunset time calculation)  
+'#' @param long Longitude of location (for sunset time calculation)  
+'#' @param timezone Timezone of location (for sunset time calculation).  
+'#' @param num.days Number of days you want sunset appointments for.  
+'#' @param file Filename for outputted .CSV file (to be uploaded to Google Calendar).  
+'#' @param location Location of sunset appointment. Will be input into Google Calendar event as the event location.  
 
-## Styles
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+The examples are as follow:
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+'#' @examples  
 
-## Figures
+'# create_sunset_cal <- function(date= "2015/01/01",  
+                                lat = 37.8789,long = -122.5362,  
+                                timezone = "UTC-8",file="sunset.csv",  
+                                location = "Spruce Harbour Marina,Vancouver, BC V6H")  
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+`create_sunrise_cal <- function(date="2015/01/01",  
+                                lat = 49.2748,timezone = "UTC-8",  
+                                num.days = 365,file="sunrise.csv",  
+                                location = "Spanish Banks, Vancouver, BC V6T")  
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
-```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
-
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+There's a useful tool from Harvard.edu [Here](http://maps.cga.harvard.edu/gpf/)
+that finds the user defined[Geographic location](https://en.wikipedia.org/wiki/Location_(geography)).  
